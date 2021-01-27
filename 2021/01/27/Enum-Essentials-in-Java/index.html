@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Elliot Coupe">
+    
+    <title>
+        
+            Enum Essentials in Java |
+        
+        Elliot&#39;s
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Elliot&#39;s
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Enum Essentials in Java</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Elliot Coupe</span>
+                        <span class="level">Lv1</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-01-27 19:52:02
+    </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>Java Enum is a special java class used to defined a collection of contrants, and it can also have methods.</p>
+<h3 id="Start-with-Enum"><a href="#Start-with-Enum" class="headerlink" title="Start with Enum"></a>Start with Enum</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Gender</span> </span>&#123;</span><br><span class="line">  MALE,</span><br><span class="line">  FEMALE</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>Enums aree a type and enum name should start with a captial. Enum members are contants which should be all capitalized.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Gender male = Gender.MALE; </span><br><span class="line"><span class="keyword">if</span> (male == Gender.MALE)&#123;</span><br><span class="line">  System.out.println(Gender.MALE.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Enum-Iteration"><a href="#Enum-Iteration" class="headerlink" title="Enum Iteration"></a>Enum Iteration</h4><p>Iterating a Enum is based on function <span style="color:lightgreen"> <em>public static E[] values()</em></span>.</p>
+<p><strong>1. Iterate with For Loop</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Gender gender : Gener.values())&#123;</span><br><span class="line">  System.out.println(gender);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.Iterate with Stream</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(Gender.values());</span><br><span class="line">Arrays.stream(Gender.values());</span><br></pre></td></tr></table></figure>
+<p><strong>3.Iterate with forEach()</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(Gender.values())</span><br><span class="line">  .forEach(g -&gt; System.out.println(g));</span><br></pre></td></tr></table></figure>
+<p><strong>4.Iterate with EnumSet</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EnumSet.allOf(Gender.class)</span><br><span class="line">  .forEach(g -&gt; System.out.println(g));</span><br></pre></td></tr></table></figure>
+<h4 id="Enum-Fields-and-Methods"><a href="#Enum-Fields-and-Methods" class="headerlink" title="Enum Fields and Methods"></a>Enum Fields and Methods</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Gender</span> </span>&#123;</span><br><span class="line">  FEMALE (<span class="number">0</span>),</span><br><span class="line">  MALE (<span class="number">1</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> levelCode;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Level</span><span class="params">(<span class="keyword">int</span> levelCode)</span></span>&#123;</span><br><span class="line">  	<span class="keyword">this</span>.levelCode = levelcode; </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLevelCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.levelCode;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<h4 id="Enum-Abstract-Methods"><a href="#Enum-Abstract-Methods" class="headerlink" title="Enum Abstract Methods"></a>Enum Abstract Methods</h4><p>If Enum has a abstract method. Them each instance of the enum class much implement it.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Gender</span> </span>&#123;</span><br><span class="line">  MALE&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> FEMALE.toString().toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  FEMALE&#123;</span><br><span class="line">  	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> FEMALE.toString().toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">toLowerCase</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Implement-a-Interface-with-Enum"><a href="#Implement-a-Interface-with-Enum" class="headerlink" title="Implement a Interface with Enum"></a>Implement a Interface with Enum</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Gender</span> <span class="keyword">implements</span> <span class="title">MyInterface</span></span>&#123;</span><br><span class="line">    MALE (<span class="string">&quot;boy&quot;</span>),</span><br><span class="line">    FEMALE (<span class="string">&quot;girl&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Gender</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Miscellanous"><a href="#Miscellanous" class="headerlink" title="Miscellanous"></a>Miscellanous</h4><p><strong>EnumSet</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EnumSet&lt;Gener&gt; set = EnumSet.of(Gender.MALE, Gender.FEMALE);</span><br><span class="line">EnumMap&lt;Gender, String&gt; map = <span class="keyword">new</span> EnumMap&lt;&gt;(Gender.class);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/01/27/HEXO-blog-and-deployment-to-Github/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Get Started with Hexo Blog-generator and deploy</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Elliot Coupe</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
