@@ -9,7 +9,7 @@
     
     <title>
         
-            Archive |
+            Anoymous Class in Java |
         
         Elliot&#39;s
     </title>
@@ -62,7 +62,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 ARCHIVES
@@ -90,7 +90,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">ARCHIVES</a>
                 </li>
             
@@ -110,52 +110,87 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Anoymous Class in Java</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Elliot Coupe</span>
+                        <span class="level">Lv1</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-01-27 21:29:08
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">(4)</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/27/Anoymous-Class-in-Java/"
-                        >Anoymous Class in Java</a>
-                        <span class="article-date">01-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/27/Enum-Essentials-in-Java/"
-                        >Enum Essentials in Java</a>
-                        <span class="article-date">01-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/27/HEXO-blog-and-deployment-to-Github/"
-                        >Get Started with Hexo Blog-generator and deploy</a>
-                        <span class="article-date">01-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/26/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">01-26</span>
-                    </li>
-                
-            </ul>
-        </section>
+    
+
+    
+    
+    
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>An anonymous class is a local class without a name. If a class will be only use once, it can be implemented anonymously.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Runnable thread = <span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IntStream.range(<span class="number">0</span>,<span class="number">10</span>).forEach(</span><br><span class="line">      c -&gt; System.out.println(<span class="string">&quot;Old Thread &quot;</span> + c)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
+<p>With the anonymous class, we don’t have to create named class for this thread.</p>
+<h4 id="The-restriction"><a href="#The-restriction" class="headerlink" title="The restriction"></a>The restriction</h4><ul>
+<li>Anonymous classes cannot define any static fields, methods, or classes, except for static-final constants.</li>
+<li>Anonymous classes cannot define constructor since it has no <strong>name</strong></li>
+<li>If more than one single instance is need, local class should be used.</li>
+</ul>
+<h4 id="When-to-use"><a href="#When-to-use" class="headerlink" title="When to use"></a>When to use</h4><ul>
+<li>The class is short</li>
+<li>Only one instance was needed</li>
+<li>The class will be used right after defined</li>
+<li>A class with a name doesn’t help will the readability of code. </li>
+</ul>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/01/27/Enum-Essentials-in-Java/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Enum Essentials in Java</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -182,6 +217,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
