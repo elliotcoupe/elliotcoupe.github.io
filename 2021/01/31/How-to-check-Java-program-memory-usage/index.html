@@ -9,7 +9,7 @@
     
     <title>
         
-            Archive: 2021/1 |
+            How to check Java program memory usage |
         
         Elliot&#39;s
     </title>
@@ -62,7 +62,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 ARCHIVES
@@ -90,7 +90,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">ARCHIVES</a>
                 </li>
             
@@ -110,73 +110,76 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">How to check Java program memory usage</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Elliot Coupe</span>
+                        <span class="level">Lv1</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-01-31 00:25:50
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">(7)</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/31/How-to-check-Java-program-memory-usage/"
-                        >How to check Java program memory usage</a>
-                        <span class="article-date">01-31</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/30/What-is-JMS-Java-Message-Service/"
-                        >What is JMS: Java Message Service</a>
-                        <span class="article-date">01-30</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/28/Java-Annotation-Basics/"
-                        >Java Annotation Basics</a>
-                        <span class="article-date">01-28</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/27/Anoymous-Class-in-Java/"
-                        >Anoymous Class in Java</a>
-                        <span class="article-date">01-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/27/Enum-Essentials-in-Java/"
-                        >Enum Essentials in Java</a>
-                        <span class="article-date">01-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/27/HEXO-blog-and-deployment-to-Github/"
-                        >Get Started with Hexo Blog-generator and deploy</a>
-                        <span class="article-date">01-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/26/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">01-26</span>
-                    </li>
-                
-            </ul>
-        </section>
+    
+
+    
+    
+    
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="What-is-Memory-Leak"><a href="#What-is-Memory-Leak" class="headerlink" title="What is Memory Leak"></a>What is Memory Leak</h3><p>Memory leak is a situation when Objects are no longer being used by application, but Garbage Collector is unable to remove them from working memory, since they are still being referenced. When the resources cosumed by the program increased, a fatal OutOfMemoryError could happen. </p>
+<h4 id="Avoding-OutOfMemoryError-by-Forcing-Garbage-Collecting"><a href="#Avoding-OutOfMemoryError-by-Forcing-Garbage-Collecting" class="headerlink" title="Avoding OutOfMemoryError by Forcing Garbage Collecting"></a>Avoding OutOfMemoryError by Forcing Garbage Collecting</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">forceGC</span><span class="params">()</span></span>&#123;</span><br><span class="line">  Runtime runtime = Runtime.getRuntime();</span><br><span class="line">  <span class="keyword">long</span> maxMen = runtime.maxMemory();</span><br><span class="line">  <span class="keyword">long</span> usedMen = runtime.totalMemory() - runtime.freeMemory();</span><br><span class="line">  <span class="keyword">long</span> usedPercentage = (usedMen * <span class="number">100</span>) / maxMen;</span><br><span class="line">  System.out.println(usedPercentage + <span class="string">&quot; % of Memory was used&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span>(usedPercentage &gt; <span class="number">90.0</span>)&#123;</span><br><span class="line">    System.gc();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Futher-Reading"><a href="#Futher-Reading" class="headerlink" title="Futher Reading"></a>Futher Reading</h4><p><a class="link"   target="_blank" rel="noopener" href="https://stackify.com/memory-leaks-java/" >How Memory Leaks Happens<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/01/30/What-is-JMS-Java-Message-Service/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">What is JMS: Java Message Service</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -203,6 +206,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
