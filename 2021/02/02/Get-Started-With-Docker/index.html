@@ -9,7 +9,7 @@
     
     <title>
         
-            Spring Boot Webservice |
+            Get Started With Docker |
         
         Elliot&#39;s
     </title>
@@ -113,7 +113,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Spring Boot Webservice</span>
+            <span class="title-hover-animation">Get Started With Docker</span>
         </div>
 
         
@@ -129,7 +129,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-02-01 00:00:39
+        <i class="fas fa-edit"></i>&nbsp;2021-02-02 00:40:08
     </span>
     
     
@@ -146,13 +146,14 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="What-is-Spring-Web-Service"><a href="#What-is-Spring-Web-Service" class="headerlink" title="What is Spring Web Service"></a>What is Spring Web Service</h3><p>Spring-WS is a product focused on creating document driven Web service, which makes the best practice having a loose coupling contract and implementation. </p>
-<h4 id="Other-Features"><a href="#Other-Features" class="headerlink" title="Other Features"></a>Other Features</h4><ul>
-<li><p>Powerful Mapping: You can distribute incoming XML requests to any object, depending on message payload or SOAP action.</p>
-</li>
-<li><p>XML API Support</p>
-</li>
-</ul>
+            <h3 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker"></a>What is Docker</h3><p>Docker is a set of platform as a service that use OS level of vitualization to deliver software in package called container. Docker container provided the ability to run an application in a loosely isolated environment.</p>
+<h3 id="Get-Started"><a href="#Get-Started" class="headerlink" title="Get Started"></a>Get Started</h3><h4 id="Docker-run"><a href="#Docker-run" class="headerlink" title="Docker run"></a>Docker run</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker pull alpine:latest # pull latest version of alpine imag</span><br><span class="line">docker image ls -a # check local docker images</span><br><span class="line"></span><br><span class="line">docker run alpine   #run image</span><br><span class="line">-d                  #detached mode</span><br><span class="line">--name 							# give name to </span><br><span class="line">-v   $(pwd):usr/share/html:ro  # volume share local dir into docker</span><br><span class="line">-p 									#expose ports </span><br></pre></td></tr></table></figure>
+<h4 id="Docker-start"><a href="#Docker-start" class="headerlink" title="Docker start"></a>Docker start</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker ps #ls all runing container</span><br><span class="line">docker ps -aq # get all contianer&#x27;s id </span><br><span class="line">docker rm $(docker ps -aq) #remove all containers</span><br><span class="line">docker stop # stop a container</span><br><span class="line">docker start # start a container</span><br></pre></td></tr></table></figure>
+<h4 id="Docker-File"><a href="#Docker-File" class="headerlink" title="Docker File"></a>Docker File</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM node:lts-alpine</span><br><span class="line">WORKDIR /app</span><br><span class="line">ADD package*.json ./</span><br><span class="line">RUN npm install</span><br><span class="line">COPY . .</span><br><span class="line">EXPOSE 3000</span><br><span class="line">CMD node index.js</span><br></pre></td></tr></table></figure>
+<p><strong>Build Image</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t node-app:latest .</span><br></pre></td></tr></table></figure>
+<h4 id="Inspects"><a href="#Inspects" class="headerlink" title="Inspects"></a>Inspects</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker inspect container-id #check structure of a container CMD</span><br><span class="line">docker exec -it container-name /bin/shell ## Get into the docker</span><br><span class="line">docker logs -f # check logs in container</span><br></pre></td></tr></table></figure>
+<h3 id="Further"><a href="#Further" class="headerlink" title="Further"></a>Further</h3><p><a class="link"   target="_blank" rel="noopener" href="https://docs.docker.com/get-started/overview/" >Official Docker Guide<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -164,13 +165,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/02/02/Get-Started-With-Docker/"
+                           href="/2021/02/02/Start-a-Gitlab-on-local-with-Docker/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Get Started With Docker</span>
+                                <span class="post-nav-title-item">Start a Gitlab on local with Docker</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -180,10 +181,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/01/31/How-to-check-Java-program-memory-usage/"
+                           href="/2021/02/01/Spring-Boot-Webservice/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">How to check Java program memory usage</span>
+                                <span class="post-nav-title-item">Spring Boot Webservice</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
