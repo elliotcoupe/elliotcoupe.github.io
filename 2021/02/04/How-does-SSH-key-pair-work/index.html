@@ -9,6 +9,8 @@
     
     <title>
         
+            How does SSH key-pair work |
+        
         Elliot&#39;s
     </title>
     <link rel="stylesheet" href="/css/style.css">
@@ -52,7 +54,7 @@
                 <ul class="menu-list">
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/"
                             >
                                 HOME
@@ -83,7 +85,7 @@
         <ul class="drawer-menu-list">
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/">HOME</a>
                 </li>
             
@@ -107,78 +109,83 @@
             <div class="main-content">
 
                 
-                    <div class="home-content-container fade-in-down-animation">
-    <ul class="home-article-list">
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">How does SSH key-pair work</span>
+        </div>
+
         
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/01/27/HEXO-blog-and-deployment-to-Github/">
-                        Get Started with Hexo Blog-generator and deploy
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        Hexo is a easy generator of personal blog based on Node.jsWith few simple step you can have your personal block generated.Mor...
-                    
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
                 </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Elliot Coupe</span>
+                        <span class="level">Lv2</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-02-04 23:50:50
+    </span>
+    
+    
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Jan 27 2021 00:18:17 GMT+0000">2021-01-27</span></span>
-        
-        
-    </div>
-
-    <a href="/2021/01/27/HEXO-blog-and-deployment-to-Github/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+    
+    
+    
 </div>
 
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/01/26/hello-world/">
-                        Hello World
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, yo...
-                    
+                    </div>
                 </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Jan 26 2021 23:45:51 GMT+0000">2021-01-26</span></span>
+            </div>
         
+
+        <div class="article-content markdown-body">
+            <p>I have started using SSH key pairs for authentication years ago, but i didn’t really get interested in how it work. However, following the instruction every time to generate and store the ssh keys are not an efficient to make full use of this technology.</p>
+<h3 id="What-is-SSH-key-authentication"><a href="#What-is-SSH-key-authentication" class="headerlink" title="What is SSH key authentication"></a>What is SSH key authentication</h3><p>Public key authentication provided crypotogrphic strengh over long prassword. Public key authenication is also widely used in single sign-on. </p>
+<p>The authenticatin is based on algorithms like RSA, DSA. The asymmetric algorithm work with tow sparate keys. </p>
+<h4 id="Public-and-Private"><a href="#Public-and-Private" class="headerlink" title="Public and Private"></a>Public and Private</h4><ul>
+<li><strong>Public</strong> Key:  Anyone with a copy of the public key can encrypt data which can then only be read by the person who holds the corresponding private key. </li>
+<li><strong>Private</strong> Key: The possession of this key is proof of the user’s identity. Only a user in possesion of a private key that corresponds to the public key at the server will be able to authenticate successfully. </li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;</span><br><span class="line">// Default address: /Users/you/.ssh/id_ed25519)</span><br></pre></td></tr></table></figure>
+<p>Private keys is encrypted wit a passphrase. When a private key is need the user is asked to supply the passphrase so that the private key can be decrypted. SSH agent can also automate this process. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot; // start the ssh agent in background</span><br><span class="line">touch ~/.ssh/config // config file to load keys into ssh-agent</span><br><span class="line">------</span><br><span class="line">Host *</span><br><span class="line">  AddKeysToAgent yes</span><br><span class="line">  UseKeychain yes</span><br><span class="line">  IdentityFile ~/.ssh/id_ed25519</span><br><span class="line">------</span><br><span class="line">ssh-add -K ~/.ssh/id_ed25519 // add key to to agent with passphrase</span><br></pre></td></tr></table></figure>
+<p>Copy or check the public key</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br><span class="line">cat ~/.ssh/id_ed25519.pub</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+
         
-    </div>
 
-    <a href="/2021/01/26/hello-world/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
         
-    </ul>
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/02/03/A-bit-of-Reflection-on-Debug/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">A bit of Reflection on Debug</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
 
-    <div class="home-paginator">
-        <div class="paginator">
-    
-        <a class="prev btn"
-           href="/"
-        >Prev</a>
-    
-
-    
-</div>
-
+        
     </div>
 </div>
 
@@ -208,6 +215,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -263,7 +283,6 @@
     
 
 </main>
-
 
 
 
