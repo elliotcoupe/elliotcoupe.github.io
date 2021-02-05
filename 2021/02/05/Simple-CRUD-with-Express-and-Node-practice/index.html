@@ -9,7 +9,7 @@
     
     <title>
         
-            How does SSH key-pair work |
+            Simple CRUD with Express and Node practice |
         
         Elliot&#39;s
     </title>
@@ -113,7 +113,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">How does SSH key-pair work</span>
+            <span class="title-hover-animation">Simple CRUD with Express and Node practice</span>
         </div>
 
         
@@ -129,7 +129,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-02-04 23:50:50
+        <i class="fas fa-edit"></i>&nbsp;2021-02-05 00:20:47
     </span>
     
     
@@ -146,18 +146,21 @@
         
 
         <div class="article-content markdown-body">
-            <p>I have started using SSH key pairs for authentication years ago, but i didn’t really get interested in how it work. However, following the instruction every time to generate and store the ssh keys are not an efficient to make full use of this technology.</p>
-<h3 id="What-is-SSH-key-authentication"><a href="#What-is-SSH-key-authentication" class="headerlink" title="What is SSH key authentication"></a>What is SSH key authentication</h3><p>Public key authentication provided crypotogrphic strengh over long prassword. Public key authenication is also widely used in single sign-on. </p>
-<p>The authenticatin is based on algorithms like RSA, DSA. The asymmetric algorithm work with tow sparate keys. </p>
-<h4 id="Public-and-Private"><a href="#Public-and-Private" class="headerlink" title="Public and Private"></a>Public and Private</h4><ul>
-<li><strong>Public</strong> Key:  Anyone with a copy of the public key can encrypt data which can then only be read by the person who holds the corresponding private key. </li>
-<li><strong>Private</strong> Key: The possession of this key is proof of the user’s identity. Only a user in possesion of a private key that corresponds to the public key at the server will be able to authenticate successfully. </li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;</span><br><span class="line">// Default address: /Users/you/.ssh/id_ed25519)</span><br></pre></td></tr></table></figure>
-<p>Private keys is encrypted wit a passphrase. When a private key is need the user is asked to supply the passphrase so that the private key can be decrypted. SSH agent can also automate this process. </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot; // start the ssh agent in background</span><br><span class="line">touch ~/.ssh/config // config file to load keys into ssh-agent</span><br><span class="line">------</span><br><span class="line">Host *</span><br><span class="line">  AddKeysToAgent yes</span><br><span class="line">  UseKeychain yes</span><br><span class="line">  IdentityFile ~/.ssh/id_ed25519</span><br><span class="line">------</span><br><span class="line">ssh-add -K ~/.ssh/id_ed25519 // add key to to agent with passphrase</span><br></pre></td></tr></table></figure>
-<p>Copy or check the public key</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br><span class="line">cat ~/.ssh/id_ed25519.pub</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            <blockquote>
+<p><strong>Express</strong>: Fast, unopinionated, minimalist web framework for Node.js</p>
+</blockquote>
+<p>I took a short cut in the Mongo db with:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 27017:27017 --name mongodb mongo</span><br></pre></td></tr></table></figure>
+<p>So the url to the db would be:  <em>mongodb://localhost:27017</em></p>
+<h4 id="Start-the-express-with"><a href="#Start-the-express-with" class="headerlink" title="Start the express with"></a>Start the express with</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.sendFile(__dirname + <span class="string">&quot;/index.html&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Server listen on <span class="subst">$&#123;port&#125;</span>`</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MongoClient = <span class="built_in">require</span>(<span class="string">&#x27;mongodb&#x27;</span>).MongoClient</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&quot;mongodb://localhost:27017&quot;</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">true</span> &#125;))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/api/v1/people&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">	MongoClient.connect(url, <span class="function">(<span class="params">err, db</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(err) <span class="built_in">console</span>.error(err)</span><br><span class="line">    <span class="keyword">var</span> dbo = db.db(<span class="string">&quot;app&quot;</span>)</span><br><span class="line">    dbo.collection(<span class="string">&quot;peple&quot;</span>)</span><br><span class="line">    	.insertOne(req.body)</span><br><span class="line">    	.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      	<span class="built_in">console</span>.log(result)</span><br><span class="line">      	res.redirect(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    	&#125;)</span><br><span class="line">    	.catch(err = <span class="built_in">console</span>.error(err))</span><br><span class="line">   	db.close()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/api/v1/people&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">	MongoClient.connect(url, <span class="function">(<span class="params">err, db</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err) <span class="built_in">console</span>.error(err)</span><br><span class="line">    <span class="keyword">var</span> dbo = db.db(<span class="string">&quot;app&quot;</span>)</span><br><span class="line">    dbo.collection(<span class="string">&quot;people&quot;</span>)</span><br><span class="line">    	.find(&#123;&#125;)</span><br><span class="line">    	.toArray(<span class="function">(<span class="params">err, result</span>) =&gt;</span>&#123;</span><br><span class="line">      	res.json(result)</span><br><span class="line">    &#125;)</span><br><span class="line">    db.close()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
 
         </div>
 
@@ -169,13 +172,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/02/05/Simple-CRUD-with-Express-and-Node-practice/"
+                           href="/2021/02/05/Recap-on-DP-with-Fibonacci-sequence/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Simple CRUD with Express and Node practice</span>
+                                <span class="post-nav-title-item">Recap on DP with Fibonacci sequence</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -185,10 +188,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/02/03/A-bit-of-Reflection-on-Debug/"
+                           href="/2021/02/04/How-does-SSH-key-pair-work/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">A bit of Reflection on Debug</span>
+                                <span class="post-nav-title-item">How does SSH key-pair work</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
