@@ -9,7 +9,7 @@
     
     <title>
         
-            Javscript Callback and Callback Hell |
+            Overcome the fear of new Tech with the Official Guide |
         
         Elliot&#39;s
     </title>
@@ -113,7 +113,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Javscript Callback and Callback Hell</span>
+            <span class="title-hover-animation">Overcome the fear of new Tech with the Official Guide</span>
         </div>
 
         
@@ -129,7 +129,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-02-09 21:48:19
+        <i class="fas fa-edit"></i>&nbsp;2021-02-10 23:08:39
     </span>
     
     
@@ -146,16 +146,10 @@
         
 
         <div class="article-content markdown-body">
-            <p>Javascript is a single-threaded with synchronous excution model whihc can only process one statement at a time. However, some more actions made takes more time, such as requesting api or query database in node. If those actions were performed synchronously, the browser would not be very efficient and will cause blocking. And there are asynchronous operations which can be accessed by JavaScript developer including callback and promises.</p>
-<h4 id="Asynchronous-JavaScript"><a href="#Asynchronous-JavaScript" class="headerlink" title="Asynchronous JavaScript"></a>Asynchronous JavaScript</h4><p>What the output o the following code </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span><span class="built_in">console</span>.log(<span class="number">1</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p>The output will be 2. 1, the code called by asyncrhonous function will be exeucted after the top-level function. </p>
-<p>In the runtme of Javascript, there is a <em>Stack</em> and a <em>Queue</em>. Stack holds the state of the fnction is currently running, and the Queue is the wating area for functions. Wheneve the stack is empty, the event loop will check the queue for any waiting messages and add to the stack.</p>
-<p>In the example, the <em>setTimeout</em> was first put into the stack and it triggered a timer and adder added the console.log(1) to the Queue, when console.log(2) was executed, the event loop bring console.log(1) from the Queue to the Stack.</p>
-<h4 id="Callback"><a href="#Callback" class="headerlink" title="Callback"></a>Callback</h4><p>Callback functions are function been passed to a another function as a argument, which are not asynchronous by nature but can be used for asynchrous purple.</p>
-<p>Take setTimeout() as an example, the first paramenter is the callback function which allow you to be informed of when as asychronous task was finished and also be able deal with the result.</p>
-<h4 id="Callback-Hell"><a href="#Callback-Hell" class="headerlink" title="Callback Hell"></a>Callback Hell</h4><p>In nested callbacks, if each callback takes an argument that’s a result of previous callbacks. The code would be hard to read and maintain. If there is an error in on function, all the others will get effected.</p>
-<p>To avoid callback hells, js provide event queue and promises.</p>
+            <p>I have been heared about IOS development all the time but I have never try it. Today I finally spend some time to try it out.</p>
+<p>A new technology may not have that much “new” things, you will be able to pick it up with the knowlege you already have. Some people would usually refer to video tutorial when they want to pick up a new tech, which is a good way to get start and avoid many mistakes. </p>
+<p>However, I have become a pro of the official guide which could looks boring sometimes but generally more sophiscated. There will be some knowledge you better know beforehead and some knowledge to be avoid in the begining stage of learning. </p>
+<p>Overall, let put the fear back and enbrace the new tech with few hours.</p>
 
         </div>
 
@@ -164,29 +158,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/02/10/Overcome-the-fear-of-new-Tech-with-the-Official-Guide/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Overcome the fear of new Tech with the Official Guide</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/02/07/Express-with-Postgres/"
+                           href="/2021/02/09/Javscript-Callback-and-Promise/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Express with Postgres</span>
+                                <span class="post-nav-title-item">Javscript Callback and Callback Hell</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
